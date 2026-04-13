@@ -12,6 +12,7 @@ use App\Livewire\Sales\Create;
 use App\Livewire\Sales\Edit as SalesEdit;
 use App\Livewire\Sales\Index;
 use App\Livewire\Sales\Show;
+use App\Livewire\Product\Index as ProductIndex;
 
 Route::get('/', [SaleController::class,'create']);
 
@@ -32,3 +33,6 @@ Route::get('/sales', Index::class)->name('sales.index');
 Route::get('/sales/create', Create::class)->name('sales.create');
 Route::get('sales/{id}',Show::class)->name('sales.show');
 Route::get('/sales/{id}/edit', SalesEdit::class)->name('sales.edit');
+
+// Arahkan ke livewire
+Route::get('/products', ProductIndex::class)->name('products.index');

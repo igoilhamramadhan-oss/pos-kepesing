@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
         $table->id();
         $table->string('sku')->unique(); // Barcode unik
-        $table->string('name');
+        $table->string('nama_obat');
         $table->integer('stock')->default(0);
         $table->bigInteger('purchase_price');
         $table->bigInteger('selling_price');
         $table->timestamps();
+        $table->date('kadaluarsa');
     });
 
     }

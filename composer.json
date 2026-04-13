@@ -1,6 +1,6 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "sofyan/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
     "keywords": [
@@ -14,7 +14,8 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "*",
-        "livewire/volt": "*"
+        "livewire/volt": "*",
+        "maatwebsite/excel": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
