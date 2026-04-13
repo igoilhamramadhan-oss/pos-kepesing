@@ -16,7 +16,7 @@ use App\Livewire\Product\Index as ProductIndex;
 
 Route::get('/', [SaleController::class,'create']);
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->except(['index']);
 
 Route::resource('customers', CustomerController::class);
 

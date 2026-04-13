@@ -18,9 +18,9 @@
 <div>
     <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nama Produk</label>
     <input type="text" 
-        name="name" 
+        name="nama_produk" 
         id="name" 
-        value="{{ old('name',$product->name) }}"
+        value="{{ old('name',$product->nama_produk) }}"
         placeholder="Masukkan nama barang lengkap"
         class="w-full px-4 py-3 rounded-xl border @error('name') border-red-500 @else border-gray-200 @enderror focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
     @error('name')
@@ -74,5 +74,19 @@
                 <i data-lucide="alert-circle" class="w-3 h-3"></i> {{ $message }}
             </p>
         @enderror
+    </div>
+
+    <div class="mt-4">
+    <label for="kadaluarsa" class="block text-sm font-semibold text-gray-700 mb-2">Tanggal Kadaluarsa</label>
+    <input type="date" 
+        name="kadaluarsa" 
+        id="kadaluarsa" 
+        value="{{ old('kadaluarsa', $product->kadaluarsa) }}"
+        class="w-full px-4 py-3 rounded-xl border @error('kadaluarsa') border-red-500 @else border-gray-200 @enderror focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+    @error('kadaluarsa')
+        <p class="text-red-500 text-xs mt-2 flex items-center gap-1">
+            <i data-lucide="alert-circle" class="w-3 h-3"></i> {{ $message }}
+        </p>
+    @enderror
     </div>
 </div>

@@ -35,13 +35,15 @@ class Index extends Component
                 // 3. Simpan ke database
                 Product::create([
                     'id'        => $row['id'],
-                    'sku'       => $row['sku']->unique(),
+                    'sku'       => $row['sku'],
                     'nama_obat' => $row['nama_obat'],
-                    'kategori'  => $row['kategori'] ?? 'Tanpa Kategori',
-                    'harga'     => $row['harga'] ?? 0,
-                    'golongan'  => $row['golongan'],
                     'stok'      => $row['stok'] ?? 0,
-                    'satuan'    => $row['satuan']
+                    'kategori'  => $row['kategori'] ?? 'Tanpa Kategori',
+                    'purcase_price'     => $row['purcase_price'],
+                    'selling_price'     => $row['selling_price'],
+                    'golongan'  => $row['golongan'],
+                    'satuan'    => $row['satuan'],
+                    'kadaluarsa'=> $row['kadaluarsa']
                     // TODO: Ayo Igo, lengkapi field golongan, stok, dan satuan di sini ya!
                 ]);
             });
@@ -58,7 +60,7 @@ class Index extends Component
 
         // Perhatikan alamat view-nya juga ikut masuk ke dalam folder 'product'
         return view('livewire.product.index', [
-            'data_produk' => $produk
+            'products' => $produk
         ])->layout('layouts.app');  
     }
 }

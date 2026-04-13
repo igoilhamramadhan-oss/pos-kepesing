@@ -10,7 +10,7 @@ class Product extends Model
 {
     use Auditable;
     // @use HasFactory<\Database\Factories\ProductsFactory>
-    protected $fillable = ['sku', 'name', 'stock', 'purchase_price', 'selling_price'];
+    protected $fillable = ['sku', 'nama_obat', 'stock', 'kategori', 'purchase_price', 'selling_price', 'golongan', 'satuan', 'kadaluarsa'];
     // Relasi: Satu produk bisa muncul di banyak detail penjualan
     public function saleDetails()
     {

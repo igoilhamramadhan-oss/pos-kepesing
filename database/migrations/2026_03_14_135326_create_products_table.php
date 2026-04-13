@@ -16,10 +16,13 @@ return new class extends Migration
         $table->string('sku')->unique(); // Barcode unik
         $table->string('nama_obat');
         $table->integer('stock')->default(0);
+        $table->string('kategori')->default('Tanpa Kategori');
         $table->bigInteger('purchase_price');
         $table->bigInteger('selling_price');
-        $table->timestamps();
+        $table->string('golongan');
+        $table->string('satuan');
         $table->date('kadaluarsa');
+        // $table->timestamps();
     });
 
     }
