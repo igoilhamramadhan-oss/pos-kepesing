@@ -4,12 +4,13 @@ namespace App\Livewire\Product; // <-- Alamat baru karena ada di dalam folder Pr
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 use App\Models\Product; // Sesuaikan dengan nama file modelmu (Product atau Produk)
-//use Spatie\SimpleExcel\SimpleExcelReader; // Package yang baru kita install
+use Spatie\SimpleExcel\SimpleExcelReader; // Package yang baru kita install
 
 class Index extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public $file_import;
     public $search = '';
@@ -56,7 +57,7 @@ class Index extends Component
     {
         $produk = Product::where('nama_obat', 'like', '%' . $this->search . '%')
                         ->orWhere('kategori', 'like', '%' . $this->search . '%')
-                        ->get();
+                        ->paginate(10);
 
         // Perhatikan alamat view-nya juga ikut masuk ke dalam folder 'product'
         return view('livewire.product.index', [

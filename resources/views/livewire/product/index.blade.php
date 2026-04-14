@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('title', 'Master Data Produk')
-
-@section('content')
 <div class="p-6">
     <div class="flex justify-between items-center mb-6">
         <p class="text-gray-500">Kelola stok dan harga barang daganganmu di sini.</p>
@@ -11,7 +6,25 @@
         </a>
     </div>
 
-    <!-- Tabel Produk -->
+    <div class="mb-6 p-4 bg-white rounded-lg shadow-sm border border-gray-100">
+        <form wire:submit="importData" class="flex items-end gap-4">
+            <div class="flex-1">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Upload Data Produk (Excel/CSV)</label>
+                <input type="file" wire:model="file_import" accept=".xlsx, .xls, .csv" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 transition">
+            </div>
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md font-medium transition shadow-sm">
+                Mulai Import
+            </button>
+        </form>
+        
+        @error('file_import') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+        @if (session()->has('pesan'))
+            <div class="mt-3 text-sm text-green-600 bg-green-50 p-2 rounded border border-green-200">
+                {{ session('pesan') }}
+            </div>
+        @endif
+    </div>
+
     <div class="overflow-x-auto">
         <table class="w-full text-left">
             <thead>
@@ -71,9 +84,7 @@
         </table>
     </div>
 
-    <!-- Pagination -->
     <div class="mt-6">
         {{ $products->links() }}
     </div>
 </div>
-@endsection

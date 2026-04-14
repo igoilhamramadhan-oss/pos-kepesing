@@ -20,7 +20,7 @@
         <form action="{{ route('products.store') }}" method="POST" class="p-8 space-y-6">
             @csrf
 
-            @include('products._form')
+            @include('product._form')
 
             <!-- Tombol Aksi -->
             <div class="pt-4 flex gap-3">
