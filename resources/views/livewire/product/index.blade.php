@@ -30,10 +30,14 @@
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-100">
                     <th class="px-4 py-3 font-medium text-gray-600">SKU</th>
-                    <th class="px-4 py-3 font-medium text-gray-600">Nama Barang</th>
+                    <th class="px-4 py-3 font-medium text-gray-600">Nama Produk</th>
                     <th class="px-4 py-3 font-medium text-gray-600">Stok</th>
+                    <th class="px-4 py-3 font-medium text-gray-600">Kategori</th>
                     <th class="px-4 py-3 font-medium text-gray-600 text-right">Harga Beli</th>
                     <th class="px-4 py-3 font-medium text-gray-600 text-right">Harga Jual</th>
+                    <th class="px-4 py-3 font-medium text-gray-600 text-right">Golongan</th>
+                    <th class="px-4 py-3 font-medium text-gray-600 text-right">Satuan</th>
+                    <th class="px-4 py-3 font-medium text-gray-600 text-right">Kadaluarsa</th>
                     <th class="px-4 py-3 font-medium text-gray-600 text-center">Aksi</th>
                 </tr>
             </thead>
