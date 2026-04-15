@@ -7,13 +7,19 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use App\Models\Product; // Sesuaikan dengan nama file modelmu (Product atau Produk)
 use Spatie\SimpleExcel\SimpleExcelReader; // Package yang baru kita install
+use Livewire\Attributes\Title;
 
 class Index extends Component
 {
     use WithFileUploads, WithPagination;
 
+    #[Title('Produk')]
     public $file_import;
     public $search = '';
+
+    public function updateSearch() {
+        $this->resetPage();
+    }
 
     public function importData()
     {
@@ -28,24 +34,42 @@ class Index extends Component
         SimpleExcelReader::create($path)
             ->getRows()
             ->each(function(array $row) {
+
+                // -- Fitur auto format header --
+                $barisBaru = [];
+                foreach($row as $HeaderLama => $isiData){
+                    /* Proses cuci header :
+                        Hilangkan spasi -> Huruf kecil -> Spapsi jadi underscore */
+                        $headerBaru = str_replace(' ', '_', strtolower(trim($HeaderLama)));
+
+                    // Simpan data ke array baru dengan nama header yang sudah rapi
+                    $barisBaru[$headerBaru] = $isiData;
+                }
+
+                // Pakai $barisBaru, bukan $row lagi
                 // Lewati baris kalau nama_obat kosong
-                if (!isset($row['nama_obat'])) {
+                if (!isset($barisBaru['nama_obat'])) {
                     return; 
                 }
 
+                // Baris untuk investigasi (dump and die)
+                // dd($barisBaru);
+
                 // 3. Simpan ke database
                 Product::create([
-                    'id'        => $row['id'],
-                    'sku'       => $row['sku'],
-                    'nama_obat' => $row['nama_obat'],
-                    'stok'      => $row['stok'] ?? 0,
-                    'kategori'  => $row['kategori'] ?? 'Tanpa Kategori',
-                    'purcase_price'     => $row['purcase_price'],
-                    'selling_price'     => $row['selling_price'],
-                    'golongan'  => $row['golongan'],
-                    'satuan'    => $row['satuan'],
-                    'kadaluarsa'=> $row['kadaluarsa']
-                    // TODO: Ayo Igo, lengkapi field golongan, stok, dan satuan di sini ya!
+                    // 'id'        => $barisBaru['id'],
+                    'sku'       => $barisBaru['sku'],
+                    'nama_obat' => $barisBaru['nama_obat'],
+
+                    'stok'      => $barisBaru['stok'] ?? ($barisBaru['stock'] ?? 0),
+                    'kategori'  => $barisBaru['kategori'] ?? 'Tanpa Kategori',
+
+                    'purchase_price'     => $barisBaru['purchase_price'] ?? 0,
+                    'selling_price'     => $barisBaru['selling_price'] ?? 0,
+
+                    'golongan'  => $barisBaru['golongan'] ?? '-',
+                    'satuan'    => $barisBaru['satuan'] ?? 'pcs',
+                    'kadaluarsa'=> $barisBaru['kadaluarsa'] ?? null
                 ]);
             });
 
