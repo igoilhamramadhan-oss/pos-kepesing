@@ -22,7 +22,7 @@ return new class extends Migration
         $table->string('golongan');
         $table->string('satuan');
         $table->date('kadaluarsa');
-        // $table->timestamps();
+        $table->timestamps();
     });
 
     }

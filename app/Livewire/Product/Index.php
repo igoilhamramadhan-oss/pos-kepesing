@@ -17,7 +17,7 @@ class Index extends Component
     public $file_import;
     public $search = '';
 
-    public function updateSearch() {
+    public function updatingSearch() {
         $this->resetPage();
     }
 
@@ -61,7 +61,7 @@ class Index extends Component
                     'sku'       => $barisBaru['sku'],
                     'nama_obat' => $barisBaru['nama_obat'],
 
-                    'stok'      => $barisBaru['stok'] ?? ($barisBaru['stock'] ?? 0),
+                    'stock'      => $barisBaru['stok'] ?? ($barisBaru['stock'] ?? 0),
                     'kategori'  => $barisBaru['kategori'] ?? 'Tanpa Kategori',
 
                     'purchase_price'     => $barisBaru['purchase_price'] ?? 0,

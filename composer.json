@@ -15,7 +15,7 @@
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "*",
         "livewire/volt": "*",
-        "maatwebsite/excel": "*"
+        "spatie/simple-excel": "^3.9"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "*",
